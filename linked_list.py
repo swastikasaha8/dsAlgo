@@ -30,7 +30,17 @@ class LinkedList:
         pass
 
     def pop(self) -> None:
-        pass
+        if self.head.next is None:
+            print("You cannot remove items from an empty linked list")
+        else:
+            node = self.head
+            prevNode = node
+            while node.next is not None:
+                prevNode = node
+                node = node.next
+            del node
+            prevNode.next = None
+            self.lastNode = prevNode
 
     def popAt(self, pos: int = -1) -> None:
         pass
@@ -38,13 +48,18 @@ class LinkedList:
     def __str__(self):
         nodes = []
         node = self.head.next
-        while node.next is not None:
-            nodes.append(node.data)
+        while node is not None:
+            nodes.append(str(node.data))
             node = node.next
-        linkedList = " -> ".join(nodes) + " -> " + node.data
+        linkedList = " -> ".join(nodes)
         return linkedList
 
 
 newLinkedList = LinkedList("a", "b", "c")
 newLinkedList.push("d")
+newLinkedList.pop()
+newLinkedList.pop()
+newLinkedList.pop()
+newLinkedList.pop()
+newLinkedList.pop()
 print(newLinkedList)
