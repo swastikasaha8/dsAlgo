@@ -20,16 +20,19 @@ class LinkedList:
                 self.lastNode.next = newNode
                 self.lastNode = newNode
 
-    def push() -> None:
+    def push(self, data) -> None:
+        newNode = Node(data)
+        newNode.next = None
+        self.lastNode.next = newNode
+        self.lastNode = newNode
+
+    def insert(self, pos: int = -1) -> None:
         pass
 
-    def insert(pos: int = -1) -> None:
+    def pop(self) -> None:
         pass
 
-    def pop() -> None:
-        pass
-
-    def popAt(pos: int = -1) -> None:
+    def popAt(self, pos: int = -1) -> None:
         pass
 
     def __str__(self):
@@ -42,5 +45,6 @@ class LinkedList:
         return linkedList
 
 
-newLinkedList = LinkedList("a", "b")
+newLinkedList = LinkedList("a", "b", "c")
+newLinkedList.push("d")
 print(newLinkedList)
