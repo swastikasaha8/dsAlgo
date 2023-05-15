@@ -26,8 +26,19 @@ class LinkedList:
         self.lastNode.next = newNode
         self.lastNode = newNode
 
-    def insert(self, pos: int = -1) -> None:
-        pass
+    def insert(self, data, pos: int) -> None:
+        node = self.head
+        prevNode = node
+        for i in range(pos):
+            prevNode = node
+            if node is not None:
+                node = node.next
+        try:
+            newNode = Node(data)
+            newNode.next = prevNode.next
+            prevNode.next = newNode
+        except:
+            print("Sorry You cannot insert an element outside the linked list")
 
     def pop(self) -> None:
         if self.head.next is None:
@@ -55,11 +66,6 @@ class LinkedList:
         return linkedList
 
 
-newLinkedList = LinkedList("a", "b", "c")
-newLinkedList.push("d")
-newLinkedList.pop()
-newLinkedList.pop()
-newLinkedList.pop()
-newLinkedList.pop()
-newLinkedList.pop()
+newLinkedList = LinkedList("a", "c", "d")
+newLinkedList.insert(2.5, 4)
 print(newLinkedList)
