@@ -37,6 +37,9 @@ class LinkedList:
             newNode = Node(data)
             newNode.next = prevNode.next
             prevNode.next = newNode
+            if newNode.next is None:
+                self.lastNode = newNode
+
         except:
             print("Sorry You cannot insert an element outside the linked list")
 
@@ -53,8 +56,20 @@ class LinkedList:
             prevNode.next = None
             self.lastNode = prevNode
 
-    def popAt(self, pos: int = -1) -> None:
-        pass
+    def popAt(self, pos: int) -> None:
+        node = self.head
+        prevNode = node
+        for i in range(pos):
+            prevNode = node
+            if node is not None:
+                node = node.next
+        try:
+            node = node.next
+            tempNode = prevNode.next
+            del tempNode
+            prevNode.next = node
+        except:
+            print("You cannot delete an element outside the range of the linked list")
 
     def __str__(self):
         nodes = []
@@ -63,9 +78,10 @@ class LinkedList:
             nodes.append(str(node.data))
             node = node.next
         linkedList = " -> ".join(nodes)
-        return linkedList
+        return f"Linked List : {linkedList}"
 
 
 newLinkedList = LinkedList("a", "c", "d")
-newLinkedList.insert(2.5, 4)
+newLinkedList.insert("e", 3)
+newLinkedList.popAt(4)
 print(newLinkedList)
