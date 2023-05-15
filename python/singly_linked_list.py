@@ -7,18 +7,12 @@ class Node:
 class LinkedList:
     def __init__(self, *args) -> None:
         self.head = Node(None)
-        self.nodes = args
-        self.lastNode = None
-        for i in self.nodes:
-            if self.head.next is None:
-                self.lastNode = Node(i)
-                self.lastNode.next = None
-                self.head.next = self.lastNode
-            else:
-                newNode = Node(i)
-                newNode.next = None
-                self.lastNode.next = newNode
-                self.lastNode = newNode
+        prevNode = self.head
+        for i in args:
+            newNode = Node(i)
+            newNode.next = None
+            prevNode.next = newNode
+            prevNode = newNode
 
     def push(self, data) -> None:
         newNode = Node(data)
@@ -102,6 +96,5 @@ class LinkedList:
         return f"Linked List : {linkedList}"
 
 
-newLinkedList = LinkedList("a", "d", "c", "d", "e", "f", "d")
-print(newLinkedList.search("d"))
+newLinkedList = LinkedList("a", "d", "c", "d", "e", "f")
 print(newLinkedList)
