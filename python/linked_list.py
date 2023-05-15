@@ -74,19 +74,23 @@ class LinkedList:
     def search(self, data) -> str:
         node = self.head.next
         pos = 1
+        positions = []
         while node is not None:
             if node.data == data:
-                break
+                positions.append(str(pos))
             if node.next is not None:
                 node = node.next
                 pos += 1
             else:
                 pos = "Sorry, this item doesn't exist in the linked list"
                 break
-        if type(pos) is str:
-            return pos
+
+        if len(positions) > 1:
+            return f"Position of '{data}' in list are {' and '.join(positions)}!"
+        elif len(positions) > 0:
+            return f"Position of '{data}' in list is {positions[0]}!"
         else:
-            return f" Position of '{data}' in list is {str(pos)}!"
+            return "Sorry this element doesn't exist in the list :("
 
     def __str__(self):
         nodes = []
@@ -98,6 +102,6 @@ class LinkedList:
         return f"Linked List : {linkedList}"
 
 
-newLinkedList = LinkedList("a", "d", "c", "d")
+newLinkedList = LinkedList("a", "d", "c", "d", "e", "f", "d")
 print(newLinkedList.search("d"))
 print(newLinkedList)
