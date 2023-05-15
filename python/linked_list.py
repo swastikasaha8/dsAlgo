@@ -71,6 +71,23 @@ class LinkedList:
         except:
             print("You cannot delete an element outside the range of the linked list")
 
+    def search(self, data) -> str:
+        node = self.head.next
+        pos = 1
+        while node is not None:
+            if node.data == data:
+                break
+            if node.next is not None:
+                node = node.next
+                pos += 1
+            else:
+                pos = "Sorry, this item doesn't exist in the linked list"
+                break
+        if type(pos) is str:
+            return pos
+        else:
+            return f" Position of '{data}' in list is {str(pos)}!"
+
     def __str__(self):
         nodes = []
         node = self.head.next
@@ -81,7 +98,6 @@ class LinkedList:
         return f"Linked List : {linkedList}"
 
 
-newLinkedList = LinkedList("a", "c", "d")
-newLinkedList.insert("e", 3)
-newLinkedList.popAt(4)
+newLinkedList = LinkedList("a", "d", "c", "d")
+print(newLinkedList.search("d"))
 print(newLinkedList)
