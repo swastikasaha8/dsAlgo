@@ -27,3 +27,5 @@ class DoublyLinkedList:
 
     def __str__(self) -> str:
         return "pass"
+def add(x,y):
+    sum=x+y
